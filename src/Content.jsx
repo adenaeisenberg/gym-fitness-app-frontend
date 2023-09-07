@@ -1,11 +1,26 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
 import { ExercisesIndex } from "./ExercisesIndex";
 
 export function Content() {
-  // making a function to view all exercises
-  // const
+  // const exercises = [
+  //   { id: 1, name: "Jog in place", description: "run in place", image_url: "image.img", video_url: "video.vid" },
+  // ];
+
+  const [exercises, setExercises] = useState([]);
+
+  const handleIndexExercises = () => {
+    console.log("handleIndexExercises");
+    axios.get("http://localhost:3000/exercises.json").then((response) => {
+      console.log(response.data);
+      setExercises(response.data);
+    });
+  };
+
+  useEffect(handleIndexExercises, []);
 
   return (
     <>
@@ -16,7 +31,7 @@ export function Content() {
         <Signup />
         <Login />
         <LogoutLink />
-        <ExercisesIndex />
+        <ExercisesIndex exercises={exercises} />
       </div>
     </>
   );
