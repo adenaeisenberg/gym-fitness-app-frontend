@@ -1,3 +1,7 @@
+#root {
+  background-image: url("assets/shinecaro.webp")
+}
+
 html {
   scroll-behavior: smooth;
 }
