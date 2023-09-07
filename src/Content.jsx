@@ -1,11 +1,11 @@
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { ExercisesIndex } from "./ExercisesIndex";
 
 export function Content() {
-
-  // making a function to view all exercises 
-const 
+  // making a function to view all exercises
+  // const
 
   return (
     <>
@@ -16,6 +16,7 @@ const
         <Signup />
         <Login />
         <LogoutLink />
+        <ExercisesIndex />
       </div>
     </>
   );
