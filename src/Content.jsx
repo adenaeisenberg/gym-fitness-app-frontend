@@ -8,6 +8,7 @@ import { WorkoutsIndex } from "./WorkoutsIndex";
 import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
+import { ExercisesNew } from "./ExercisesNew";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
@@ -31,6 +32,14 @@ export function Content() {
   const handleEClose = () => {
     console.log("handleEClose");
     setIsExercisesShowVisible(false);
+  };
+
+  const handleCreateExercise = (params, successCallback) => {
+    console.log("handleCreateExercise", params);
+    axios.post("http://localhost:3000/exercises.json", params).then((response) => {
+      setExercises([...exercises, response.data]);
+      successCallback();
+    });
   };
 
   useEffect(handleIndexExercises, []);
@@ -72,6 +81,7 @@ export function Content() {
         <Modal show={isExercisesShowVisible} onClose={handleEClose}>
           <ExercisesShow exercise={currentExercise} />
         </Modal>
+        <ExercisesNew onCreateExercise={handleCreateExercise} />
         <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />
         <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
           <WorkoutsShow workout={currentWorkout} />
