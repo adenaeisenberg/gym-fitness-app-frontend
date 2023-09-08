@@ -2,13 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
-import { LogoutLink } from "./LogoutLink";
 import { ExercisesIndex } from "./ExercisesIndex";
 import { WorkoutsIndex } from "./WorkoutsIndex";
 import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
 import { ExercisesNew } from "./ExercisesNew";
+import { WorkoutsNew } from "./WorkoutsNew";
+import { RoutinesNew } from "./RoutinesNew";
+import { Routes, Route } from "react-router-dom";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
@@ -66,7 +68,23 @@ export function Content() {
     });
   };
 
+  const handleCreateWorkout = (params, successCallback) => {
+    console.log("handleCreateWorkout", params);
+    axios.post("http://localhost:3000/workouts.json", params).then((response) => {
+      setWorkouts([...workouts, response.data]);
+      successCallback();
+    });
+  };
+
   useEffect(handleIndexWorkouts, []);
+
+  const handleCreateRoutine = (params, successCallback) => {
+    console.log("handleCreateRoutine", params);
+    axios.post("http://localhost:3000/routines.json", params).then((response) => {
+      setRoutines([...routines, response.data]);
+      successCallback();
+    });
+  };
 
   return (
     <>
@@ -74,18 +92,29 @@ export function Content() {
         <h1 style={{ color: "red" }}>Welcome to the Gym Fitness App!</h1>
       </div>
       <div className="container">
-        <Signup />
-        <Login />
-        <LogoutLink />
-        <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} />
+        <Routes>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/exercises"
+            element={<ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} />}
+          />
+        </Routes>
+
+        {/* <Route path="/workouts" element={<WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />} /> */}
+
+        <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />
         <Modal show={isExercisesShowVisible} onClose={handleEClose}>
           <ExercisesShow exercise={currentExercise} />
         </Modal>
         <ExercisesNew onCreateExercise={handleCreateExercise} />
-        <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />
+
+        <RoutinesNew onCreateRoutine={handleCreateRoutine} />
+
         <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
           <WorkoutsShow workout={currentWorkout} />
         </Modal>
+        <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
       </div>
     </>
   );

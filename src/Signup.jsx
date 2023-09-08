@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function Signup() {
   const [errors, setErrors] = useState([]);
@@ -47,6 +48,7 @@ export function Signup() {
         </div>
         <button type="submit">Signup</button>
       </form>
+      Already a GymFit user? Click <Link to="./login">here</Link> to login
     </div>
   );
 }
