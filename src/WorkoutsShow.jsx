@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { RoutinesNew } from "./RoutinesNew";
+
 export function WorkoutsShow(props) {
   return (
     <div>
@@ -11,6 +13,7 @@ export function WorkoutsShow(props) {
           <p>Weight: {routine.weight}</p>
         </div>
       ))}
+      <RoutinesNew />
     </div>
   );
 }

@@ -21,7 +21,7 @@ export function RoutinesNew(props) {
         <div>
           Weight: <input name="weight" type="text" />
         </div>
-        <button type="submit">Create photo</button>
+        <button type="submit">Add Exercise to Workout</button>
       </form>
     </div>
   );
