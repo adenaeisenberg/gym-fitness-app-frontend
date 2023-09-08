@@ -13,6 +13,7 @@ import { RoutinesNew } from "./RoutinesNew";
 import { Routes, Route } from "react-router-dom";
 
 export function Content() {
+  // *** EXERCISE ***
   const [exercises, setExercises] = useState([]);
   const [isExercisesShowVisible, setIsExercisesShowVisible] = useState(false);
   const [currentExercise, setCurrentExercise] = useState({});
@@ -36,15 +37,17 @@ export function Content() {
     setIsExercisesShowVisible(false);
   };
 
-  const handleCreateExercise = (params, successCallback) => {
-    console.log("handleCreateExercise", params);
-    axios.post("http://localhost:3000/exercises.json", params).then((response) => {
-      setExercises([...exercises, response.data]);
-      successCallback();
-    });
-  };
+  // const handleCreateExercise = (params, successCallback) => {
+  //   console.log("handleCreateExercise", params);
+  //   axios.post("http://localhost:3000/exercises.json", params).then((response) => {
+  //     setExercises([...exercises, response.data]);
+  //     successCallback();
+  //   });
+  // };
 
   useEffect(handleIndexExercises, []);
+
+  // *** WORKOUTS ***
 
   const [workouts, setWorkouts] = useState([]);
   const [isWorkoutsShowVisible, setIsWorkoutsShowVisible] = useState(false);
@@ -78,6 +81,8 @@ export function Content() {
 
   useEffect(handleIndexWorkouts, []);
 
+  // *** ROUTINES ***
+
   const handleCreateRoutine = (params, successCallback) => {
     console.log("handleCreateRoutine", params);
     axios.post("http://localhost:3000/routines.json", params).then((response) => {
@@ -97,7 +102,9 @@ export function Content() {
           <Route path="/login" element={<Login />} />
           <Route
             path="/exercises"
-            element={<ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} />}
+            element={
+              <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} setExercises={setExercises} />
+            }
           />
         </Routes>
 
@@ -107,7 +114,7 @@ export function Content() {
         <Modal show={isExercisesShowVisible} onClose={handleEClose}>
           <ExercisesShow exercise={currentExercise} />
         </Modal>
-        <ExercisesNew onCreateExercise={handleCreateExercise} />
+        {/* <ExercisesNew onCreateExercise={handleCreateExercise} /> */}
 
         <RoutinesNew onCreateRoutine={handleCreateRoutine} />
 
