@@ -1,8 +1,17 @@
+import { RoutinesNew } from "./RoutinesNew";
+import axios from "axios";
+
 /* eslint-disable react/prop-types */
 
-import { RoutinesNew } from "./RoutinesNew";
-
 export function WorkoutsShow(props) {
+  const handleCreateRoutine = (params, successCallback) => {
+    console.log("handleCreateRoutine", params);
+    axios.post("http://localhost:3000/routines.json", params).then((response) => {
+      props.setRoutines([...props.routines, response.data]);
+      successCallback();
+    });
+  };
+
   return (
     <div>
       <h1>{props.workout.title}</h1>
@@ -13,7 +22,7 @@ export function WorkoutsShow(props) {
           <p>Weight: {routine.weight}</p>
         </div>
       ))}
-      <RoutinesNew />
+      <RoutinesNew onCreateRoutine={handleCreateRoutine} />
     </div>
   );
 }

@@ -7,12 +7,14 @@ import { WorkoutsIndex } from "./WorkoutsIndex";
 import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
-import { ExercisesNew } from "./ExercisesNew";
+// import { ExercisesNew } from "./ExercisesNew";
 import { WorkoutsNew } from "./WorkoutsNew";
-import { RoutinesNew } from "./RoutinesNew";
+// import { RoutinesNew } from "./RoutinesNew";
 import { Routes, Route } from "react-router-dom";
 
 export function Content() {
+  const [routines, setRoutines] = useState([]);
+
   // *** EXERCISE ***
   const [exercises, setExercises] = useState([]);
   const [isExercisesShowVisible, setIsExercisesShowVisible] = useState(false);
@@ -83,13 +85,13 @@ export function Content() {
 
   // *** ROUTINES ***
 
-  const handleCreateRoutine = (params, successCallback) => {
-    console.log("handleCreateRoutine", params);
-    axios.post("http://localhost:3000/routines.json", params).then((response) => {
-      setRoutines([...routines, response.data]);
-      successCallback();
-    });
-  };
+  // const handleCreateRoutine = (params, successCallback) => {
+  //   console.log("handleCreateRoutine", params);
+  //   axios.post("http://localhost:3000/routines.json", params).then((response) => {
+  //     setRoutines([...routines, response.data]);
+  //     successCallback();
+  //   });
+  // };
 
   return (
     <>
@@ -116,10 +118,10 @@ export function Content() {
         </Modal>
         {/* <ExercisesNew onCreateExercise={handleCreateExercise} /> */}
 
-        <RoutinesNew onCreateRoutine={handleCreateRoutine} />
+        {/* <RoutinesNew onCreateRoutine={handleCreateRoutine} /> */}
 
         <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
-          <WorkoutsShow workout={currentWorkout} />
+          <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
         </Modal>
         <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
       </div>
