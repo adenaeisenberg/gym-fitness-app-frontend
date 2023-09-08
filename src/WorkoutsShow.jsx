@@ -3,8 +3,7 @@
 export function WorkoutsShow(props) {
   return (
     <div>
-      <h1>My Workouts</h1>
-      <h2>{props.workout.title}</h2>
+      <h1>{props.workout.title}</h1>
       {props.workout.routines.map((routine) => (
         <div key={routine.id}>
           <h4>{routine.exercise.name}</h4>
