@@ -6,14 +6,13 @@ import { LogoutLink } from "./LogoutLink";
 import { ExercisesIndex } from "./ExercisesIndex";
 import { WorkoutsIndex } from "./WorkoutsIndex";
 import { Modal } from "./Modal";
+import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
 
 export function Content() {
   const [exercises, setExercises] = useState([]);
-  const [workouts, setWorkouts] = useState([]);
-
-  const [isWorkoutsShowVisible, setIsWorkoutsShowVisible] = useState(false);
-  const [currentWorkout, setCurrentWorkout] = useState({});
+  const [isExercisesShowVisible, setIsExercisesShowVisible] = useState(false);
+  const [currentExercise, setCurrentExercise] = useState({});
 
   const handleIndexExercises = () => {
     console.log("handleIndexExercises");
@@ -22,6 +21,23 @@ export function Content() {
       setExercises(response.data);
     });
   };
+
+  const handleShowExercise = (exercise) => {
+    console.log("handleShowExercise", exercise);
+    setIsExercisesShowVisible(true);
+    setCurrentExercise(exercise);
+  };
+
+  const handleEClose = () => {
+    console.log("handleEClose");
+    setIsExercisesShowVisible(false);
+  };
+
+  useEffect(handleIndexExercises, []);
+
+  const [workouts, setWorkouts] = useState([]);
+  const [isWorkoutsShowVisible, setIsWorkoutsShowVisible] = useState(false);
+  const [currentWorkout, setCurrentWorkout] = useState({});
 
   const handleShowWorkout = (workout) => {
     console.log("handleShowWorkout", workout);
@@ -33,9 +49,6 @@ export function Content() {
     console.log("handleClose");
     setIsWorkoutsShowVisible(false);
   };
-
-  useEffect(handleIndexExercises, []);
-
   const handleIndexWorkouts = () => {
     console.log("handleIndexWorkouts");
     axios.get("http://localhost:3000/workouts.json").then((response) => {
@@ -48,16 +61,18 @@ export function Content() {
 
   return (
     <>
-      <div>
+      <div className="container">
         <h1 style={{ color: "red" }}>Welcome to the Gym Fitness App!</h1>
       </div>
-      <div>
+      <div className="container">
         <Signup />
         <Login />
         <LogoutLink />
-        <ExercisesIndex exercises={exercises} />
+        <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} />
+        <Modal show={isExercisesShowVisible} onClose={handleEClose}>
+          <ExercisesShow exercise={currentExercise} />
+        </Modal>
         <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />
-
         <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
           <WorkoutsShow workout={currentWorkout} />
         </Modal>
