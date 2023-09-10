@@ -12,6 +12,10 @@ export function ExercisesIndex(props) {
 
   return (
     <div>
+      <div className="card text-center">
+        <ExercisesNew onCreateExercise={handleCreateExercise} />
+      </div>
+
       {props.exercises.map((exercise) => (
         <div className="card text-center" key={exercise.id}>
           <div className="card-header">ID: {exercise.id}</div>
@@ -22,7 +26,6 @@ export function ExercisesIndex(props) {
           </div>
         </div>
       ))}
-      <ExercisesNew onCreateExercise={handleCreateExercise} />
     </div>
   );
 }
