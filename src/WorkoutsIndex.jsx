@@ -1,4 +1,15 @@
+import { WorkoutsNew } from "./WorkoutsNew";
+import axios from "axios";
+
 export function WorkoutsIndex(props) {
+  const handleCreateWorkout = (params, successCallback) => {
+    console.log("handleCreateWorkout", params);
+    axios.post("http://localhost:3000/workouts.json", params).then((response) => {
+      props.setWorkouts([...props.workouts, response.data]);
+      successCallback();
+    });
+  };
+
   return (
     <div>
       <h1>All Workouts</h1>
@@ -8,6 +19,7 @@ export function WorkoutsIndex(props) {
           <button onClick={() => props.onShowWorkout(workout)}>See full workout</button>
         </div>
       ))}
+      <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
     </div>
   );
 }

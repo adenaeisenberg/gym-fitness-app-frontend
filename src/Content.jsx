@@ -73,14 +73,6 @@ export function Content() {
     });
   };
 
-  const handleCreateWorkout = (params, successCallback) => {
-    console.log("handleCreateWorkout", params);
-    axios.post("http://localhost:3000/workouts.json", params).then((response) => {
-      setWorkouts([...workouts, response.data]);
-      successCallback();
-    });
-  };
-
   useEffect(handleIndexWorkouts, []);
 
   // *** ROUTINES ***
@@ -108,7 +100,17 @@ export function Content() {
               <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} setExercises={setExercises} />
             }
           />
-          <Route path="/workouts" element={<WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />} />
+          <Route
+            path="/workouts"
+            element={
+              <WorkoutsIndex
+                workouts={workouts}
+                onShowWorkout={handleShowWorkout}
+                // onCreateWorkout={handleCreateWorkout}
+                setWorkouts={setWorkouts}
+              />
+            }
+          />
         </Routes>
 
         {/* <Modal show={isExercisesShowVisible} onClose={handleEClose}>
