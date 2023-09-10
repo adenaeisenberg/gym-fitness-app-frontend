@@ -19,6 +19,7 @@ export function ExercisesIndex(props) {
       {props.exercises.map((exercise) => (
         <div className="card text-center" key={exercise.id}>
           <div className="card-header">ID: {exercise.id}</div>
+          <p className="space" />
           <h5 className="card-title">{exercise.name}</h5>
           <div className="card-body">
             <p className="card-text">{exercise.description}</p>
