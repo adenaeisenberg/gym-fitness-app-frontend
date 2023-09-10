@@ -105,7 +105,12 @@ export function Content() {
           <Route
             path="/exercises"
             element={
-              <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} setExercises={setExercises} />
+              <>
+                <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} setExercises={setExercises} />
+                <Modal show={isExercisesShowVisible} onClose={handleEClose}>
+                  <ExercisesShow exercise={currentExercise} />
+                </Modal>
+              </>
             }
           />
           <Route
@@ -113,9 +118,6 @@ export function Content() {
             element={
               <>
                 <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
-                <Modal show={isExercisesShowVisible} onClose={handleEClose}>
-                  <ExercisesShow exercise={currentExercise} />
-                </Modal>
                 <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
                   <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
                 </Modal>
