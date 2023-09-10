@@ -11,24 +11,22 @@ export function ExercisesIndex(props) {
   };
 
   return (
-    <>
-      <br />
-      <div className="card text-center">
-        {props.exercises.map((exercise) => (
-          <div key={exercise.id}>
-            <div className="card-header">{exercise.name}</div>
-            <div className="card-body">
-              <button onClick={() => props.onShowExercise(exercise)}>More info</button>
-              <h5 className="card-title">{exercise.description}</h5>
-            </div>
+    <div>
+      {props.exercises.map((exercise) => (
+        <div className="card text-center" key={exercise.id}>
+          <div className="card-header">ID: {exercise.id}</div>
+          <h5 className="card-title">{exercise.name}</h5>
+          <div className="card-body">
+            <p className="card-text">{exercise.description}</p>
+            <button onClick={() => props.onShowExercise(exercise)}>More info</button>
           </div>
-        ))}
-        <ExercisesNew onCreateExercise={handleCreateExercise} />
-      </div>
-    </>
+        </div>
+      ))}
+      <ExercisesNew onCreateExercise={handleCreateExercise} />
+    </div>
   );
 }
-
+// {exercise.description}
 {
   /* <div>
   <h1>All Exercises</h1>
