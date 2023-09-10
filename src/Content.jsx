@@ -75,6 +75,14 @@ export function Content() {
 
   useEffect(handleIndexWorkouts, []);
 
+  const handleCreateWorkout = (params, successCallback) => {
+    console.log("handleCreateWorkout", params);
+    axios.post("http://localhost:3000/workouts.json", params).then((response) => {
+      setWorkouts([...workouts, response.data]);
+      successCallback();
+    });
+  };
+
   // *** ROUTINES ***
 
   // const handleCreateRoutine = (params, successCallback) => {
@@ -103,24 +111,22 @@ export function Content() {
           <Route
             path="/workouts"
             element={
-              <WorkoutsIndex
-                workouts={workouts}
-                onShowWorkout={handleShowWorkout}
-                // onCreateWorkout={handleCreateWorkout}
-                setWorkouts={setWorkouts}
-              />
+              <>
+                <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
+                <Modal show={isExercisesShowVisible} onClose={handleEClose}>
+                  <ExercisesShow exercise={currentExercise} />
+                </Modal>
+                <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
+                  <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
+                </Modal>
+                <br />
+                <br />
+
+                <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
+              </>
             }
           />
         </Routes>
-
-        {/* <Modal show={isExercisesShowVisible} onClose={handleEClose}>
-          <ExercisesShow exercise={currentExercise} />
-        </Modal>
-
-        <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
-          <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
-        </Modal>
-        <WorkoutsNew onCreateWorkout={handleCreateWorkout} /> */}
       </div>
     </>
   );

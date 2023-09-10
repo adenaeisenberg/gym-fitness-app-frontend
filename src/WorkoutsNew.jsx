@@ -12,7 +12,7 @@ export function WorkoutsNew(props) {
         <div>
           Title: <input name="title" type="text" />
         </div>
-        <button type="submit">Create New Workout</button>
+        <button type="submit">Add a New Workout!</button>
       </form>
     </div>
   );
