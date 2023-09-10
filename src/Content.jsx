@@ -108,22 +108,17 @@ export function Content() {
               <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} setExercises={setExercises} />
             }
           />
+          <Route path="/workouts" element={<WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />} />
         </Routes>
 
-        {/* <Route path="/workouts" element={<WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />} /> */}
-
-        <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} />
-        <Modal show={isExercisesShowVisible} onClose={handleEClose}>
+        {/* <Modal show={isExercisesShowVisible} onClose={handleEClose}>
           <ExercisesShow exercise={currentExercise} />
         </Modal>
-        {/* <ExercisesNew onCreateExercise={handleCreateExercise} /> */}
-
-        {/* <RoutinesNew onCreateRoutine={handleCreateRoutine} /> */}
 
         <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
           <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
         </Modal>
-        <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
+        <WorkoutsNew onCreateWorkout={handleCreateWorkout} /> */}
       </div>
     </>
   );

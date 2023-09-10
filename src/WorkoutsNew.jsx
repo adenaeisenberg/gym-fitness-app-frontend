@@ -7,7 +7,7 @@ export function WorkoutsNew(props) {
 
   return (
     <div>
-      <h1>New Workout!</h1>
+      <h3>New Workout!</h3>
       <form onSubmit={handleSubmit}>
         <div>
           Title: <input name="title" type="text" />

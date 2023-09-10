@@ -25,6 +25,9 @@ export function Header() {
                 <Link to="./">Home</Link>
               </li>
               <li className="nav-item">
+                <Link to="./workouts">Workouts</Link>
+              </li>
+              <li className="nav-item">
                 <Link to="./exercises">All Exercises</Link>
               </li>
               <li className="nav-item dropdown">
