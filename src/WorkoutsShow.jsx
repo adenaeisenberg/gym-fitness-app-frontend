@@ -22,7 +22,7 @@ export function WorkoutsShow(props) {
           <p>Weight: {routine.weight}</p>
         </div>
       ))}
-      <RoutinesNew onCreateRoutine={handleCreateRoutine} />
+      <RoutinesNew onCreateRoutine={handleCreateRoutine} currentWorkout={props.workout} />
     </div>
   );
 }

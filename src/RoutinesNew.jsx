@@ -2,6 +2,7 @@ export function RoutinesNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
+    params.append("workout_id", props.currentWorkout.id);
     props.onCreateRoutine(params, () => event.target.reset());
   };
 
@@ -9,9 +10,9 @@ export function RoutinesNew(props) {
     <div>
       <h1>Add a Routine to a Workout!</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           Workout ID: <input name="workout_id" type="text" />
-        </div>
+        </div> */}
         <div>
           Exercise ID: <input name="exercise_id" type="text" />
         </div>
