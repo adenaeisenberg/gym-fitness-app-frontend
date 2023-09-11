@@ -7,9 +7,7 @@ import { WorkoutsIndex } from "./WorkoutsIndex";
 import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
-// import { ExercisesNew } from "./ExercisesNew";
 import { WorkoutsNew } from "./WorkoutsNew";
-// import { RoutinesNew } from "./RoutinesNew";
 import { Routes, Route } from "react-router-dom";
 
 export function Content() {
@@ -39,14 +37,6 @@ export function Content() {
     setIsExercisesShowVisible(false);
   };
 
-  // const handleCreateExercise = (params, successCallback) => {
-  //   console.log("handleCreateExercise", params);
-  //   axios.post("http://localhost:3000/exercises.json", params).then((response) => {
-  //     setExercises([...exercises, response.data]);
-  //     successCallback();
-  //   });
-  // };
-
   useEffect(handleIndexExercises, []);
 
   // *** WORKOUTS ***
@@ -61,6 +51,10 @@ export function Content() {
     setCurrentWorkout(workout);
   };
 
+  // useEffect(() => {
+  //   workouts;
+  // });
+
   const handleClose = () => {
     console.log("handleClose");
     setIsWorkoutsShowVisible(false);
@@ -74,6 +68,7 @@ export function Content() {
   };
 
   useEffect(handleIndexWorkouts, []);
+  // useEffect(handleShowWorkout, []);
 
   const handleCreateWorkout = (params, successCallback) => {
     console.log("handleCreateWorkout", params);
@@ -85,18 +80,15 @@ export function Content() {
 
   // *** ROUTINES ***
 
-  // const handleCreateRoutine = (params, successCallback) => {
-  //   console.log("handleCreateRoutine", params);
-  //   axios.post("http://localhost:3000/routines.json", params).then((response) => {
-  //     setRoutines([...routines, response.data]);
-  //     successCallback();
-  //   });
-  // };
-
   return (
     <>
       <div className="container">
         <h1 style={{ color: "red" }}>Welcome to the Gym Fitness App!</h1>
+        {localStorage.jwt === undefined ? (
+          <Signup />
+        ) : (
+          <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
+        )}
       </div>
       <div className="container">
         <Routes>
