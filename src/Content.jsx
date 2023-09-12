@@ -8,7 +8,7 @@ import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
 import { WorkoutsNew } from "./WorkoutsNew";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 export function Content() {
   const [routines, setRoutines] = useState([]);
@@ -84,11 +84,7 @@ export function Content() {
     <>
       <div className="container">
         <h1 style={{ color: "red" }}>Welcome to the Gym Fitness App!</h1>
-        {localStorage.jwt === undefined ? (
-          <Signup />
-        ) : (
-          <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
-        )}
+        {localStorage.jwt === undefined ? <Navigate to="/login" /> : <Navigate to="/workouts" />}
       </div>
       <div className="container">
         <Routes>
@@ -125,3 +121,44 @@ export function Content() {
     </>
   );
 }
+
+// <div className="container">
+//   <h1 style={{ color: "red" }}>Welcome to the Gym Fitness App!</h1>
+//   {localStorage.jwt === undefined ? (
+//     <><Routes>
+//     <Route path="/redirect" element={<Navigate to="/signup" />} />
+//     <Routes/>
+//     ) : (
+//     {/* <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} /> */}
+//     <Routes/>
+//     )}
+//   </div>
+//   <div className="container">
+//       <Routes>
+//         <Route path="/signup" element={<Signup />} />
+//         <Route path="/login" element={<Login />} />
+//         <Route
+//           path="/exercises"
+//           element={<>
+//             <ExercisesIndex exercises={exercises} onShowExercise={handleShowExercise} setExercises={setExercises} />
+//             <Modal show={isExercisesShowVisible} onClose={handleEClose}>
+//               <ExercisesShow exercise={currentExercise} />
+//             </Modal>
+//           </>} />
+//         <Route
+//           path="/workouts"
+//           element={<>
+//             <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
+//             <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
+//               <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
+//             </Modal>
+//             <br />
+//             <br />
+
+//             <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
+//           </>} />
+//       </Routes>
+//     </div></>
+
+//       );
+//     }
