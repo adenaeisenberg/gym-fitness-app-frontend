@@ -7,9 +7,9 @@ export function WorkoutsNew(props) {
 
   return (
     <div>
-      <div className="card">
+      <div className="card text-center">
         <div className="card-body">
-          <h5 className="card-title">New Workout!</h5>
+          <h5 className="card-title">Add a New Workout!</h5>
           <form onSubmit={handleSubmit}>
             <div>
               Title: <input name="title" type="text" />
