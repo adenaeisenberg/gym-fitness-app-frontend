@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function ExercisesNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();

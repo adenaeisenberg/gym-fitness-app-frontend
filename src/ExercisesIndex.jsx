@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ExercisesNew } from "./ExercisesNew";
 import axios from "axios";
 
@@ -20,7 +21,7 @@ export function ExercisesIndex(props) {
 
       {props.exercises.map((exercise) => (
         <div className="card text-center" key={exercise.id}>
-          <div className="card-header">ID: {exercise.id}</div>
+          <div className="card-header"></div>
           <p className="space" />
           <h5 className="card-title">{exercise.name}</h5>
           <div className="card-body">
