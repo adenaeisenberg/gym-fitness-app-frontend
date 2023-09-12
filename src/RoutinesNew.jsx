@@ -10,9 +10,6 @@ export function RoutinesNew(props) {
     <div>
       <h1>Add a Routine to a Workout!</h1>
       <form onSubmit={handleSubmit}>
-        {/* <div>
-          Workout ID: <input name="workout_id" type="text" />
-        </div> */}
         <div>
           Exercise ID: <input name="exercise_id" type="text" />
         </div>
