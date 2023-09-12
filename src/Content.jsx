@@ -9,6 +9,7 @@ import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
 import { Routes, Route } from "react-router-dom";
+import { About } from "./About";
 
 export function Content() {
   const [routines, setRoutines] = useState([]);
@@ -74,6 +75,7 @@ export function Content() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route

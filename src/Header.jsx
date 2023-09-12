@@ -5,7 +5,7 @@ export function Header() {
     <header>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             GymFit
           </a>
           <button
@@ -22,7 +22,7 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="./">Home</Link>
+                <Link to="./about">About</Link>
               </li>
               <li className="nav-item">
                 <Link to="./workouts">Workouts</Link>
