@@ -101,7 +101,6 @@ export function Content() {
             path="/workouts"
             element={
               <>
-                {/* <WorkoutsNew onCreateWorkout={handleCreateWorkout} /> */}
                 <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
                 <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
                   <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
