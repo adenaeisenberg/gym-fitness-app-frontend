@@ -45,6 +45,7 @@ export function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
+      New here? Become a GymFit user by clicking <Link to="/signup">here</Link>
     </div>
   );
 }

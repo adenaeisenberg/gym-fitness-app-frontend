@@ -48,7 +48,7 @@ export function Signup() {
         </div>
         <button type="submit">Signup</button>
       </form>
-      Already a GymFit user? Click <Link to="./login">here</Link> to login
+      Already a GymFit user? Click <Link to="/login">here</Link> to login
     </div>
   );
 }
