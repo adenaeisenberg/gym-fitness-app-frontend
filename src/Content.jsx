@@ -8,7 +8,6 @@ import { Home } from "./Home";
 import { Modal } from "./Modal";
 import { ExercisesShow } from "./ExercisesShow";
 import { WorkoutsShow } from "./WorkoutsShow";
-import { WorkoutsNew } from "./WorkoutsNew";
 import { Routes, Route } from "react-router-dom";
 
 export function Content() {
@@ -66,15 +65,6 @@ export function Content() {
 
   useEffect(handleIndexWorkouts, []);
 
-  // moving this to the child function- Workouts Index
-  // const handleCreateWorkout = (params, successCallback) => {
-  //   console.log("handleCreateWorkout", params);
-  //   axios.post("http://localhost:3000/workouts.json", params).then((response) => {
-  //     setWorkouts([...workouts, response.data]);
-  //     successCallback();
-  //   });
-  // };
-
   return (
     <>
       <div className="container">
@@ -103,7 +93,12 @@ export function Content() {
               <>
                 <WorkoutsIndex workouts={workouts} onShowWorkout={handleShowWorkout} setWorkouts={setWorkouts} />
                 <Modal show={isWorkoutsShowVisible} onClose={handleClose}>
-                  <WorkoutsShow workout={currentWorkout} routines={routines} setRoutines={setRoutines} />
+                  <WorkoutsShow
+                    workout={currentWorkout}
+                    routines={routines}
+                    setRoutines={setRoutines}
+                    exercises={exercises}
+                  />
                 </Modal>
                 <br />
                 <br />
