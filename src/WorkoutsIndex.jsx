@@ -14,6 +14,7 @@ export function WorkoutsIndex(props) {
   return (
     <div>
       <h1>All Workouts</h1>
+      <h3> The collection of your custom workouts</h3>
 
       <WorkoutsNew onCreateWorkout={handleCreateWorkout} />
 

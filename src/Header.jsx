@@ -53,11 +53,6 @@ export function Header() {
                   ) : (
                     <li>
                       <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      {/* added a /  */}
-
-                      <li>
                         <LogoutLink />
                       </li>
                     </li>
