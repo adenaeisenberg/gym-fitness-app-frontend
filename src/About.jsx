@@ -10,7 +10,7 @@ export function About() {
       <h5>
         Create custom workouts by clicking <Link to="/workouts">here</Link>
       </h5>
-      <br />
+      <p className="space" />
       <h5>
         To see an index of all exercises, add custom exercises, and learn how to properly do each exercise click{" "}
         <Link to="/exercises">here</Link>
