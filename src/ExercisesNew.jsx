@@ -7,7 +7,7 @@ export function ExercisesNew(props) {
 
   return (
     <div>
-      <h1>New Exercise</h1>
+      <h3>New Exercise</h3>
       <form onSubmit={handleSubmit}>
         <div>
           Name: <input name="name" type="text" />
