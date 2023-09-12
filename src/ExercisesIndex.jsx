@@ -30,17 +30,3 @@ export function ExercisesIndex(props) {
     </div>
   );
 }
-// {exercise.description}
-{
-  /* <div>
-  <h1>All Exercises</h1>
-  {props.exercises.map((exercise) => (
-    <div key={exercise.id}>
-      <h2>{exercise.name}</h2>
-      <button onClick={() => props.onShowExercise(exercise)}>More info</button>
-    </div>
-  ))}
-  <br />
-  <ExercisesNew onCreateExercise={handleCreateExercise} />
-</div>; */
-}
