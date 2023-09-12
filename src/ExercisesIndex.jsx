@@ -12,6 +12,8 @@ export function ExercisesIndex(props) {
 
   return (
     <div>
+      <h1>All Exercises</h1>
+      <h4> A collection of popular exercises. Personalize this page and add your own unique exercises! </h4>
       <div className="card text-center">
         <ExercisesNew onCreateExercise={handleCreateExercise} />
       </div>
