@@ -16,11 +16,10 @@ export function RoutinesNew(props) {
           <select name="exercise_id" id="exercises">
             {props.exercises.map((exercise) => (
               <option value={exercise.id} key={exercise.id}>
-                {exercise.name}{" "}
+                {exercise.name}
               </option>
             ))}
           </select>
-          {/* <input name="exercise_id" type="text" /> */}
         </div>
         <div>
           Reps: <input name="reps" type="text" />
